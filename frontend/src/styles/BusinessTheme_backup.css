@@ -1,0 +1,102 @@
+/* Business-grade Theme Overrides for Villa Management System */
+:root{
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --accent: #0f4c81; /* deep blue */
+  --accent-2: #0ea5a4; /* teal */
+  --success: #0ea55a;
+  --danger: #dc3545;
+  --radius: 10px;
+  --container-width: 1200px;
+}
+
+/* Base typography and layout */
+html,body,#root{height:100%;}
+body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111827;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Constrain main app width and center content */
+.app-professional .header-content-professional,
+.app-professional .main-content-professional{
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+/* Header: subtle, flat, compact */
+.header-professional{
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
+  border-bottom: 1px solid rgba(15,76,129,0.06);
+  box-shadow: 0 1px 0 rgba(15,76,129,0.02);
+}
+.logo-text-professional{font-weight:600; font-size:1.125rem; color:var(--accent-2);}
+.logo-icon-professional{font-size:1.9rem}
+
+/* Header action buttons: clean, flat */
+.btn-professional-primary{background:var(--accent); border-radius:8px; padding:0.55rem 0.9rem; box-shadow:none;}
+.btn-professional-primary span{font-weight:600}
+.btn-professional-secondary{background:transparent; border:1px solid rgba(15,76,129,0.08); color:var(--muted);} 
+
+/* Navigation tabs: simplified, subtle */
+.nav-tabs-professional{
+  display:flex;
+  gap:0.5rem;
+  padding:0.4rem;
+  background:transparent;
+  margin:1.25rem 0;
+}
+.nav-tab-professional{
+  padding:0.6rem 0.9rem;
+  border-radius:8px;
+  background:transparent;
+  color:var(--muted);
+  border:1px solid transparent;
+}
+.nav-tab-professional.active{background:var(--accent); color:#fff; box-shadow:0 4px 12px rgba(15,76,129,0.12)}
+
+/* Cards: crisp, airy */
+.card-professional{background:var(--surface); border-radius:var(--radius); border:1px solid rgba(15,76,129,0.04); padding:1.25rem; box-shadow:0 6px 18px rgba(12,20,32,0.03)}
+.card-professional::before{display:none}
+
+/* Stats cards layout tweaks */
+.stats-grid-professional{gap:1rem}
+.stat-value-professional{color:var(--accent); font-size:1.7rem}
+.stat-label-professional{color:var(--muted)}
+
+/* Tables: clean lines */
+.table-professional{width:100%; border-collapse:collapse; background:transparent}
+.table-professional th, .table-professional td{padding:0.6rem 0.75rem; border-bottom:1px solid rgba(15,76,129,0.04); color:#0f1724}
+.table-professional th{font-weight:600; color:var(--muted); font-size:0.85rem}
+
+/* Forms: consistent inputs */
+.form-input-professional{border-radius:8px; padding:0.6rem 0.75rem; border:1px solid rgba(12,20,32,0.06)}
+
+/* Modals: centered with clear header and footer */
+.modal .modal-header{padding:1rem 1rem; border-bottom:1px solid rgba(12,20,32,0.04);}
+.modal .modal-content{background:var(--surface); border-radius:10px; padding:1rem}
+
+/* Buttons: primary/secondary variants */
+.btn-primary{background:var(--accent); color:#fff; padding:0.5rem 0.9rem; border-radius:8px; border:none}
+.btn-secondary{background:transparent; border:1px solid rgba(12,20,32,0.06); color:var(--muted); padding:0.45rem 0.8rem}
+
+/* Minor utility tweaks */
+.header-actions-professional{gap:0.75rem}
+.recent-expenses-section h3{margin:0 0 0.75rem 0; font-size:1rem; color:#0f1724}
+
+/* Responsive adjustments: keep mobile friendly */
+@media (max-width:768px){
+  .card-professional{padding:1rem}
+  .nav-tabs-professional{overflow:auto}
+}
+
+/* Reduce heavy animations for business look */
+.page-transition, .card-entrance{animation:none}
+
+/* Accessibility: focus visible */
+.form-input-professional:focus, .btn-primary:focus, .btn-secondary:focus{outline:3px solid rgba(14,122,116,0.12); outline-offset:2px}

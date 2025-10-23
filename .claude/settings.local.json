@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm start)",
+      "Bash(lsof:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(set PORT=3001)",
+      "Bash(awk:*)",
+      "Read(//c//**)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(pkill:*)",
+      "Bash(set PORT=3002)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(npm update:*)",
+      "Bash(tasklist)",
+      "Bash(set PORT=3004)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(set PORT=3005)",
+      "Bash(set PORT=3006)",
+      "Bash(set PORT=3007)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

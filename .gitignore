@@ -1,0 +1,254 @@
+# Villa Management System - .gitignore
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Lock files (optional - uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ============================================
+# Environment Variables & Secrets
+# ============================================
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# Build Output
+# ============================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+
+# ============================================
+# Frontend Specific
+# ============================================
+/frontend/node_modules/
+/frontend/build/
+/frontend/dist/
+/frontend/.cache/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# ============================================
+# Backend Specific
+# ============================================
+/backend/node_modules/
+/backend/logs/
+/backend/uploads/
+/backend/.env
+/backend/dist/
+
+# ============================================
+# Mobile (React Native)
+# ============================================
+/mobile/node_modules/
+/mobile/.expo/
+/mobile/.expo-shared/
+/mobile/dist/
+/mobile/*.jks
+/mobile/*.p8
+/mobile/*.p12
+/mobile/*.key
+/mobile/*.mobileprovision
+/mobile/*.orig.*
+/mobile/web-build/
+
+# Metro
+.metro-health-check*
+
+# Android
+/mobile/android/.gradle/
+/mobile/android/build/
+/mobile/android/app/build/
+/mobile/android/.idea/
+/mobile/android/local.properties
+/mobile/android/*.iml
+/mobile/android/.cxx/
+/mobile/android/.externalNativeBuild/
+/mobile/android/**/gradle-wrapper.jar
+*.hprof
+
+# iOS
+/mobile/ios/Pods/
+/mobile/ios/build/
+/mobile/ios/**/*.mode1v3
+/mobile/ios/**/*.mode2v3
+/mobile/ios/**/*.moved-aside
+/mobile/ios/**/*.pbxuser
+/mobile/ios/**/*.perspectivev3
+/mobile/ios/**/*sync/
+/mobile/ios/**/.sconsign.dblite
+/mobile/ios/**/.tags*
+/mobile/ios/**/.vagrant/
+/mobile/ios/**/DerivedData/
+/mobile/ios/**/xcuserdata/
+/mobile/ios/.xcode.env.local
+
+# ============================================
+# Testing
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+.jest-test-results.json
+__snapshots__/
+
+# ============================================
+# IDEs and Editors
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# ============================================
+# OS Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# Database
+# ============================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# ============================================
+# Certificates & Keys
+# ============================================
+*.pem
+*.key
+*.cert
+*.crt
+*.keystore
+*.jks
+*.p12
+*.p8
+*.mobileprovision
+
+# ============================================
+# Uploads & User Content
+# ============================================
+uploads/*
+!uploads/.gitkeep
+/backend/uploads/*
+!/backend/uploads/.gitkeep
+
+# ============================================
+# Docker
+# ============================================
+docker-compose.override.yml
+.dockerignore
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+*~
+
+# ============================================
+# Miscellaneous
+# ============================================
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+.eslintcache
+.npm
+.node_repl_history
+*.tgz
+.cache

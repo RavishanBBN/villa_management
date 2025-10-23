@@ -1,0 +1,187 @@
+/* Dark Neon Theme - Complete Override */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  background: #0a0a14 !important;
+  color: #e2e8f0 !important;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+/* Override ALL white backgrounds */
+.app,
+.dashboard,
+.properties,
+.reservations,
+.financial-section,
+.calendar-section,
+.pricing-section,
+.messages-section,
+.stat-card,
+.card,
+.table,
+.modal,
+.form,
+.input-group,
+.section {
+  background: transparent !important;
+}
+
+/* Override stat cards */
+.stat-card {
+  background: rgba(20, 20, 35, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Override tables */
+.table, 
+.reservation-table,
+.property-table,
+.expense-table,
+.revenue-table {
+  background: rgba(20, 20, 35, 0.6) !important;
+  color: #e2e8f0 !important;
+}
+
+.table th {
+  background: rgba(30, 30, 50, 0.8) !important;
+  color: #a78bfa !important;
+}
+
+.table td {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.table tr:hover td {
+  background: rgba(168, 85, 247, 0.1) !important;
+}
+
+/* Override all cards */
+.card-professional,
+.pricing-card,
+.message-card,
+.property-card,
+.financial-card,
+.dashboard-card {
+  background: rgba(20, 20, 35, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Override empty states */
+.empty-state {
+  background: rgba(20, 20, 35, 0.6) !important;
+  color: #94a3b8 !important;
+}
+
+/* Override all sections */
+.section-header,
+.financial-actions-section,
+.recent-expenses-section,
+.pricing-grid,
+.calendar-grid {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+/* Override pricing cards */
+.pricing-card {
+  background: rgba(20, 20, 35, 0.8) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+}
+
+/* Override status badges */
+.status {
+  background: rgba(168, 85, 247, 0.2) !important;
+  border: 1px solid rgba(168, 85, 247, 0.5) !important;
+  color: #a78bfa !important;
+}
+
+.status.confirmed,
+.status.approved {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+}
+
+.status.pending {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+
+.status.cancelled,
+.status.rejected {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+
+/* Override conversation panels */
+.conversations-panel,
+.conversation-item,
+.message-preview {
+  background: rgba(20, 20, 35, 0.6) !important;
+  color: #e2e8f0 !important;
+}
+
+.conversation-item:hover {
+  background: rgba(168, 85, 247, 0.15) !important;
+}
+
+/* Override all text colors */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.card-title,
+.pricing-header h3 {
+  color: #e2e8f0 !important;
+}
+
+/* Override chart containers */
+.chart-container-professional,
+.financial-chart,
+.dashboard-chart {
+  background: rgba(20, 20, 35, 0.6) !important;
+  border: 1px solid rgba(168, 85, 247, 0.2) !important;
+}
+
+/* Override action buttons area */
+.actions-grid button {
+  color: white !important;
+}
+
+/* Override expense/revenue items */
+.expense-item-preview,
+.revenue-item,
+.transaction-item {
+  background: rgba(20, 20, 35, 0.6) !important;
+  border: 1px solid rgba(168, 85, 247, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Override calendar cells */
+.calendar-cell,
+.day-cell {
+  background: rgba(20, 20, 35, 0.6) !important;
+  border: 1px solid rgba(168, 85, 247, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+
+.calendar-cell:hover {
+  background: rgba(168, 85, 247, 0.15) !important;
+}
+
+/* Override forecast cards */
+.forecast-card {
+  background: rgba(20, 20, 35, 0.6) !important;
+  border: 1px solid rgba(168, 85, 247, 0.2) !important;
+  color: #e2e8f0 !important;
+}
