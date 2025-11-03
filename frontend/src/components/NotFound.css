@@ -1,0 +1,138 @@
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.not-found-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 60px 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.6s ease;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.not-found-content h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.not-found-content p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.action-buttons .btn-primary,
+.action-buttons .btn-secondary {
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.action-buttons .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.action-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.action-buttons .btn-secondary {
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.action-buttons .btn-secondary:hover {
+  background: #667eea;
+  color: white;
+}
+
+.helpful-links {
+  border-top: 2px solid #eee;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.helpful-links h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.helpful-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.helpful-links li {
+  margin-bottom: 12px;
+}
+
+.helpful-links a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.helpful-links a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

@@ -1,85 +1,60 @@
 // src/services/currencyService.js
-// Simple currency service for Halcyon Rest
+/**
+ * Currency Service
+ * Handles exchange rate updates and currency conversions
+ */
 
 const axios = require('axios');
 
 class CurrencyService {
   constructor() {
-    this.exchangeRate = 300; // Fallback USD to LKR rate
+    this.exchangeRate = 300; // Fallback rate
     this.lastUpdated = null;
   }
 
-  async initialize() {
+  async updateExchangeRate() {
     try {
-      await this.updateRates();
-      console.log('✅ Currency service initialized');
-      return true;
-    } catch (error) {
-      console.log('⚠️ Using fallback exchange rate:', this.exchangeRate);
-      return false;
-    }
-  }
-
-  async updateRates() {
-    try {
-      const response = await axios.get('https://api.exchangerate-api.com/v4/latest/USD', {
-        timeout: 5000
-      });
-      
+      const response = await axios.get('https://api.exchangerate-api.com/v4/latest/USD');
       if (response.data && response.data.rates && response.data.rates.LKR) {
         this.exchangeRate = response.data.rates.LKR;
-        this.lastUpdated = new Date();
-        console.log(`💱 Exchange rate updated: 1 USD = ${this.exchangeRate} LKR`);
+        this.lastUpdated = new Date().toISOString();
+        console.log(`✅ Exchange rate updated: 1 USD = ${this.exchangeRate} LKR`);
       }
     } catch (error) {
-      console.log('⚠️ Using fallback exchange rate');
+      console.log('⚠️ Using fallback exchange rate:', this.exchangeRate);
     }
   }
 
-  async convertCurrency(amount, from, to) {
-    if (from === to) {
-      return {
-        originalAmount: amount,
-        convertedAmount: amount,
-        fromCurrency: from,
-        toCurrency: to,
-        exchangeRate: 1
-      };
-    }
-
-    let convertedAmount;
-    let rate;
-
-    if (from === 'USD' && to === 'LKR') {
-      rate = this.exchangeRate;
-      convertedAmount = amount * rate;
-    } else if (from === 'LKR' && to === 'USD') {
-      rate = 1 / this.exchangeRate;
-      convertedAmount = amount * rate;
-    } else {
-      throw new Error(`Conversion between ${from} and ${to} not supported`);
-    }
-
-    return {
-      originalAmount: amount,
-      convertedAmount: Math.round(convertedAmount * 100) / 100,
-      fromCurrency: from,
-      toCurrency: to,
-      exchangeRate: rate
-    };
-  }
-
-  getCurrentUsdLkrRate() {
+  getRate() {
     return this.exchangeRate;
   }
 
-  formatCurrency(amount, currency) {
-    if (currency === 'USD') {
-      return `$${amount.toFixed(2)}`;
-    } else if (currency === 'LKR') {
-      return `Rs. ${Math.round(amount).toLocaleString()}`;
+  getLastUpdated() {
+    return this.lastUpdated;
+  }
+
+  convert(amount, fromCurrency, toCurrency) {
+    if (fromCurrency === toCurrency) return amount;
+    
+    if (fromCurrency === 'USD' && toCurrency === 'LKR') {
+      return amount * this.exchangeRate;
     }
-    return `${currency} ${amount}`;
+    
+    if (fromCurrency === 'LKR' && toCurrency === 'USD') {
+      return amount / this.exchangeRate;
+    }
+    
+    return amount;
+  }
+
+  startAutoUpdate(intervalMs = 3600000) {
+    // Update immediately
+    this.updateExchangeRate();
+    
+    // Then update every interval (default: 1 hour)
+    setInterval(() => {
+      this.updateExchangeRate();
+    }, intervalMs);
   }
 }
 

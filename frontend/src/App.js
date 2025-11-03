@@ -7,6 +7,13 @@ import LoadingScreen from './components/LoadingScreen';
 import ProfessionalBackground from './components/ProfessionalBackground';
 import InventoryManagement from './components/tabs/InventoryManagement';
 import InventoryModals from './components/modals/InventoryModals';
+import Accounting from './components/tabs/Accounting';
+import InvoiceManagement from './components/tabs/InvoiceManagement';
+import GuestManagement from './components/tabs/GuestManagement';
+import AnalyticsReports from './components/tabs/AnalyticsReports';
+import NotificationsEmail from './components/tabs/NotificationsEmail';
+import UploadManagement from './components/tabs/UploadManagement';
+import { useToast } from './components/common/Toast';
 // Complete Chart.js imports - register ALL required components
 import {
   Chart as ChartJS,
@@ -4206,8 +4213,14 @@ const stats = dashboardData ? {
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'properties', label: 'Properties', icon: '🏠' },
     { id: 'reservations', label: 'Reservations', icon: '📅' },
+    { id: 'guests', label: 'Guests', icon: '👤' },
+    { id: 'invoices', label: 'Invoices', icon: '📄' },
     { id: 'inventory', label: 'Inventory', icon: '📦' },
-    { id: 'financial', label: 'Financial', icon: '💰' },
+    { id: 'accounting', label: 'Accounting', icon: '📚' },
+    { id: 'analytics', label: 'Analytics & Reports', icon: '📈' },
+    { id: 'notifications', label: 'Notifications & Email', icon: '🔔' },
+    { id: 'upload', label: 'Upload & Export', icon: '📤' },
+    { id: 'financial', label: 'Financial (Legacy)', icon: '💰' },
     { id: 'calendar', label: 'Calendar', icon: '🗓️' },
     { id: 'pricing', label: 'Pricing', icon: '💎' },
     { id: 'messages', label: 'Messages', icon: '📨' },
@@ -5426,6 +5439,30 @@ const stats = dashboardData ? {
             setShowStockOutModal={setShowStockOutModal}
             properties={properties}
           />
+        )}
+
+        {activeTab === 'accounting' && (
+          <Accounting />
+        )}
+
+        {activeTab === 'invoices' && (
+          <InvoiceManagement />
+        )}
+
+        {activeTab === 'guests' && (
+          <GuestManagement />
+        )}
+
+        {activeTab === 'analytics' && (
+          <AnalyticsReports />
+        )}
+
+        {activeTab === 'notifications' && (
+          <NotificationsEmail />
+        )}
+
+        {activeTab === 'upload' && (
+          <UploadManagement />
         )}
 
         {activeTab === 'calendar' && (

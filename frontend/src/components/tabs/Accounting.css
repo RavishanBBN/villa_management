@@ -1,0 +1,584 @@
+/* Accounting Tab Styles */
+
+.accounting-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.accounting-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.accounting-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #1f2937;
+}
+
+.accounting-header p {
+  margin: 0.5rem 0 0 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Navigation Tabs */
+.accounting-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.accounting-nav button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.accounting-nav button:hover {
+  color: #1f2937;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.accounting-nav button.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Sections */
+.accounting-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+}
+
+/* Filters */
+.filters, .date-filters, .transaction-filters {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.date-filters input,
+.date-filters select,
+.transaction-filters input,
+.transaction-filters select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.date-filters span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.dashboard-card {
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-card .card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.dashboard-card .card-value.revenue {
+  color: #10b981;
+}
+
+.dashboard-card .card-value.expense {
+  color: #ef4444;
+}
+
+.dashboard-card .card-value.profit {
+  color: #3b82f6;
+}
+
+/* Chart of Accounts Table */
+.accounts-table-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.accounts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.accounts-table thead {
+  background: #f9fafb;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.accounts-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.accounts-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.accounts-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.accounts-table td {
+  padding: 1rem;
+  color: #1f2937;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-asset { background: #dbeafe; color: #1e40af; }
+.badge-liability { background: #fef3c7; color: #92400e; }
+.badge-equity { background: #e0e7ff; color: #3730a3; }
+.badge-revenue { background: #d1fae5; color: #065f46; }
+.badge-expense { background: #fee2e2; color: #991b1b; }
+
+.debit-amount {
+  color: #059669;
+  font-weight: 600;
+}
+
+.credit-amount {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.inactive {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Transaction Ledger */
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.transaction-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.transaction-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.transaction-info strong {
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.transaction-date {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.transaction-amount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.transaction-description {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.journal-entries {
+  margin-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.journal-table {
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.journal-table th {
+  text-align: left;
+  padding: 0.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.journal-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Financial Reports */
+.reports-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.report-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.report-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+}
+
+.report-period {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.report-table .section-header-row td {
+  background: #f9fafb;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  border-top: 2px solid #e5e7eb;
+}
+
+.report-table .indent {
+  padding-left: 2rem;
+  color: #4b5563;
+}
+
+.report-table .amount {
+  text-align: right;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+.report-table .amount.revenue {
+  color: #059669;
+}
+
+.report-table .amount.expense {
+  color: #dc2626;
+}
+
+.report-table .amount.profit {
+  color: #3b82f6;
+}
+
+.report-table .amount.loss {
+  color: #dc2626;
+}
+
+.report-table .total-row td {
+  background: #f9fafb;
+  border-top: 1px solid #d1d5db;
+  font-weight: 600;
+}
+
+.report-table .final-row td {
+  background: #f3f4f6;
+  border-top: 2px solid #374151;
+  border-bottom: 3px double #374151;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.balance-check {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.balance-check .balanced {
+  color: #065f46;
+  background: #d1fae5;
+}
+
+.balance-check .unbalanced {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+/* Budgets */
+.budgets-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.budget-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.budget-card h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.budget-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* Loading & Empty States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #9ca3af;
+}
+
+.empty-state p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.empty-state button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.empty-state button:hover {
+  background: #2563eb;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+/* Initialization Screen */
+.initialization-screen {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.init-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.initialization-screen h2 {
+  margin: 1rem 0;
+  color: #1f2937;
+}
+
+.initialization-screen p {
+  margin: 0.75rem 0;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  background: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .accounting-container {
+    padding: 1rem;
+  }
+
+  .accounting-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-card {
+    padding: 1rem;
+  }
+
+  .report-table .indent {
+    padding-left: 1rem;
+  }
+}

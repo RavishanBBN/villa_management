@@ -37,6 +37,13 @@ db.StockTransaction = require('./StockTransaction')(sequelize, DataTypes);
 db.Revenue = require('./Revenue')(sequelize, DataTypes);
 db.Expense = require('./Expense')(sequelize, DataTypes);
 
+// Automated Accounting models
+db.Account = require('./Account')(sequelize, DataTypes);
+db.Transaction = require('./Transaction')(sequelize, DataTypes);
+db.JournalEntry = require('./JournalEntry')(sequelize, DataTypes);
+db.Budget = require('./Budget')(sequelize, DataTypes);
+db.TaxConfiguration = require('./TaxConfiguration')(sequelize, DataTypes);
+
 // System models
 db.User = require('./User')(sequelize, DataTypes);
 db.Message = require('./Message')(sequelize, DataTypes);

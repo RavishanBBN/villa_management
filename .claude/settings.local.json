@@ -28,7 +28,17 @@
       "Bash(grep:*)",
       "Bash(set PORT=3005)",
       "Bash(set PORT=3006)",
-      "Bash(set PORT=3007)"
+      "Bash(set PORT=3007)",
+      "Bash(bash test-all-endpoints.sh:*)",
+      "Bash(tee:*)",
+      "Bash(PGPASSWORD=\"ViLL4REST2025@PASS\" psql:*)",
+      "Bash(PGPASSWORD=\"Vn@851015\" psql:*)",
+      "Bash(timeout 2 tail:*)",
+      "Bash(npm install:*)",
+      "Bash(python3:*)",
+      "Bash(xargs kill:*)",
+      "Bash(cd:*)",
+      "Bash(git add .)"
     ],
     "deny": [],
     "ask": []

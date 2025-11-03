@@ -583,7 +583,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id/download', async (req, res) => {
   try {
     const invoice = await db.Invoice.findByPk(req.params.id);
-    
+
     if (!invoice) {
       return res.status(404).json({
         success: false,
@@ -605,6 +605,70 @@ router.get('/:id/download', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to download invoice',
+      error: error.message
+    });
+  }
+});
+
+/**
+ * @route   POST /api/invoices/:id/send
+ * @desc    Send invoice via email
+ * @access  Private
+ */
+router.post('/:id/send', async (req, res) => {
+  try {
+    const invoice = await db.Invoice.findByPk(req.params.id, {
+      include: [
+        {
+          model: db.Reservation,
+          as: 'reservation'
+        }
+      ]
+    });
+
+    if (!invoice) {
+      return res.status(404).json({
+        success: false,
+        message: 'Invoice not found'
+      });
+    }
+
+    if (!invoice.issuedToEmail) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invoice has no email address'
+      });
+    }
+
+    // Import email service
+    const emailService = require('../services/emailService');
+
+    // Send email with PDF attachment if available
+    const result = await emailService.sendInvoiceEmail(
+      invoice,
+      invoice.filePath || null
+    );
+
+    // Update sent timestamp
+    await invoice.update({
+      sentAt: new Date()
+    });
+
+    res.json({
+      success: true,
+      message: `Invoice sent successfully to ${invoice.issuedToEmail}`,
+      data: {
+        messageId: result.messageId,
+        sentTo: invoice.issuedToEmail,
+        sentAt: new Date()
+      }
+    });
+
+  } catch (error) {
+    console.error('Error sending invoice:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to send invoice',
       error: error.message
     });
   }

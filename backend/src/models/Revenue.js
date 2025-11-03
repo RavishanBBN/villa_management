@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
+    propertyId: {
+      type: DataTypes.UUID,
+      allowNull: true,
+      references: {
+        model: 'properties',
+        key: 'id'
+      }
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -72,6 +80,13 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'revenues',
     timestamps: true
   });
+
+  Revenue.associate = (models) => {
+    Revenue.belongsTo(models.Property, {
+      foreignKey: 'propertyId',
+      as: 'property'
+    });
+  };
 
   return Revenue;
 };

@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     invoiceFile: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     receiptFile: {
       type: DataTypes.STRING,

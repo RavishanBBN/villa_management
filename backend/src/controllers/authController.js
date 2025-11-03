@@ -99,7 +99,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    const { username, password } = req.body;
+    const { username, password, rememberMe } = req.body;
 
     // Find user by username or email
     const user = await User.findOne({
@@ -128,11 +128,24 @@ exports.login = async (req, res) => {
 
     // Verify password
     const isPasswordValid = await user.comparePassword(password);
-    
+
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials'
+      });
+    }
+
+    // Check if 2FA is enabled
+    if (user.twoFactorEnabled) {
+      return res.status(200).json({
+        success: true,
+        message: '2FA required',
+        data: {
+          requiresTwoFactor: true,
+          userId: user.id,
+          email: user.email
+        }
       });
     }
 
@@ -157,7 +170,9 @@ exports.login = async (req, res) => {
           role: user.role,
           permissions: user.permissions,
           status: user.status,
-          lastLoginAt: user.lastLoginAt
+          lastLoginAt: user.lastLoginAt,
+          twoFactorEnabled: user.twoFactorEnabled,
+          emailVerified: user.emailVerified
         },
         token,
         refreshToken

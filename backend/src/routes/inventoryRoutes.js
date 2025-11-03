@@ -9,6 +9,59 @@ const { Sequelize } = require('sequelize');
 
 // ===== INVENTORY ITEMS ENDPOINTS =====
 
+// Base route - get all items (alias for /items)
+router.get('/', async (req, res, next) => {
+  req.url = '/items';
+  next();
+});
+
+// POST base route - create item (alias for /items)
+router.post('/', async (req, res, next) => {
+  req.url = '/items';
+  next();
+});
+
+// Low stock alert endpoint - direct access
+router.get('/low-stock', async (req, res) => {
+  try {
+    const items = await InventoryItem.findAll({
+      where: Sequelize.where(
+        Sequelize.col('current_stock'),
+        Op.lte,
+        Sequelize.col('min_stock')
+      ),
+      order: [
+        [Sequelize.literal('(current_stock - min_stock)'), 'ASC'],
+        ['name', 'ASC']
+      ]
+    });
+
+    const summary = {
+      totalLowStockItems: items.length,
+      criticalItems: items.filter(i => i.currentStock === 0).length,
+      warningItems: items.filter(i => i.currentStock > 0 && i.currentStock <= i.minStock).length
+    };
+
+    res.json({
+      success: true,
+      data: {
+        items,
+        summary
+      },
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Get low stock items error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch low stock items',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Get all inventory items with filtering
 router.get('/items', async (req, res) => {
   try {

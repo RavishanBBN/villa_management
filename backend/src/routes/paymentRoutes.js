@@ -6,6 +6,7 @@ const router = express.Router();
 const { Op } = require('sequelize');
 const db = require('../models');
 const currencyService = require('../services/currencyService');
+const accountingService = require('../services/accountingService');
 
 // GET /api/payments - Get all payments with filters
 router.get('/', async (req, res) => {
@@ -142,7 +143,16 @@ router.post('/', async (req, res) => {
       paidAt: new Date(),
       receiptNumber: 'RCP-' + Date.now().toString().slice(-8)
     }, { transaction });
-    
+
+    // Record payment in automated accounting system
+    try {
+      await accountingService.recordReservationRevenue(reservation, payment, transaction);
+      console.log('✅ Automated accounting journal entries created for payment:', payment.id);
+    } catch (accountingError) {
+      console.error('⚠️ Accounting error (non-critical):', accountingError.message);
+      // Continue even if accounting fails - payment is still recorded
+    }
+
     // Update reservation's total paid amount
     const payments = await db.Payment.findAll({
       where: {
@@ -166,36 +176,49 @@ router.post('/', async (req, res) => {
     }, { transaction });
     
     await transaction.commit();
-    
-    // Fetch complete payment data
-    const completePayment = await db.Payment.findByPk(payment.id, {
-      include: [{
-        model: db.Reservation,
-        as: 'reservation',
-        include: [
-          {
-            model: db.Property,
-            as: 'property',
-            attributes: ['id', 'name', 'unit']
-          },
-          {
-            model: db.Guest,
-            as: 'guest',
-            attributes: ['id', 'bookerName', 'country']
-          }
-        ]
-      }]
-    });
-    
-    res.status(201).json({
-      success: true,
-      data: completePayment,
-      message: 'Payment recorded successfully',
-      timestamp: new Date().toISOString()
-    });
-    
+
+    // Fetch complete payment data (after commit, so errors here won't rollback)
+    try {
+      const completePayment = await db.Payment.findByPk(payment.id, {
+        include: [{
+          model: db.Reservation,
+          as: 'reservation',
+          include: [
+            {
+              model: db.Property,
+              as: 'property',
+              attributes: ['id', 'name', 'unit']
+            },
+            {
+              model: db.Guest,
+              as: 'guest',
+              attributes: ['id', 'bookerName', 'country']
+            }
+          ]
+        }]
+      });
+
+      res.status(201).json({
+        success: true,
+        data: completePayment,
+        message: 'Payment recorded successfully',
+        timestamp: new Date().toISOString()
+      });
+    } catch (fetchError) {
+      // Payment was created successfully, just return basic data
+      res.status(201).json({
+        success: true,
+        data: payment,
+        message: 'Payment recorded successfully',
+        timestamp: new Date().toISOString()
+      });
+    }
+
   } catch (error) {
-    await transaction.rollback();
+    // Only rollback if transaction hasn't been committed
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
     res.status(500).json({
       success: false,
       message: 'Failed to record payment',
@@ -366,28 +389,40 @@ router.post('/:id/refund', async (req, res) => {
     }
     
     await transaction.commit();
-    
-    // Fetch updated payment
-    const updatedPayment = await db.Payment.findByPk(id, {
-      include: [{
-        model: db.Reservation,
-        as: 'reservation',
-        include: [
-          { model: db.Property, as: 'property' },
-          { model: db.Guest, as: 'guest' }
-        ]
-      }]
-    });
-    
-    res.json({
-      success: true,
-      data: updatedPayment,
-      message: `Refund of ${amount} ${payment.currency} processed successfully`,
-      timestamp: new Date().toISOString()
-    });
-    
+
+    // Fetch updated payment (after commit)
+    try {
+      const updatedPayment = await db.Payment.findByPk(id, {
+        include: [{
+          model: db.Reservation,
+          as: 'reservation',
+          include: [
+            { model: db.Property, as: 'property' },
+            { model: db.Guest, as: 'guest' }
+          ]
+        }]
+      });
+
+      res.json({
+        success: true,
+        data: updatedPayment,
+        message: `Refund of ${amount} ${payment.currency} processed successfully`,
+        timestamp: new Date().toISOString()
+      });
+    } catch (fetchError) {
+      res.json({
+        success: true,
+        data: payment,
+        message: `Refund of ${amount} ${payment.currency} processed successfully`,
+        timestamp: new Date().toISOString()
+      });
+    }
+
   } catch (error) {
-    await transaction.rollback();
+    // Only rollback if transaction hasn't been committed
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
     res.status(500).json({
       success: false,
       message: 'Failed to process refund',

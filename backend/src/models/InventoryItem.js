@@ -380,16 +380,19 @@ module.exports = (sequelize, DataTypes) => {
     currentStock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0,
+      field: 'current_stock'
     },
     minStock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 5
+      defaultValue: 5,
+      field: 'min_stock'
     },
     maxStock: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'max_stock'
     },
     unit: {
       type: DataTypes.STRING(20),
@@ -437,7 +440,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     indexes: [
       { fields: ['category'] },
-      { fields: ['currentStock'] },
+      { fields: ['current_stock'] },
       { fields: ['sku'] },
       { fields: ['isActive'] }
     ]
