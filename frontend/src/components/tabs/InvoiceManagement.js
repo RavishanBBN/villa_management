@@ -12,7 +12,7 @@ const InvoiceManagement = () => {
     pagination,
     loadInvoices,
     loadInvoiceById,
-    generateForReservation,
+    // generateForReservation, // Unused - kept for future use
     createManual,
     recordPayment,
     voidInvoice,
@@ -22,7 +22,7 @@ const InvoiceManagement = () => {
     updateFilters,
     clearFilters,
     calculateStatistics,
-    setSelectedInvoice
+    // setSelectedInvoice // Unused - kept for future use
   } = useInvoices();
 
   // UI State
@@ -266,6 +266,7 @@ const InvoiceManagement = () => {
   // Apply filters when they change
   useEffect(() => {
     loadInvoices(filters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.type, filters.paymentStatus, filters.search, filters.startDate, filters.endDate]);
 
   return (

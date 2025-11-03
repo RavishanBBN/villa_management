@@ -41,7 +41,11 @@
       "Bash(git add .)",
       "Bash(test:*)",
       "Bash(npm --version)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix ESLint warnings and document remaining issues\n\n- Fixed most ESLint warnings in App.js and component tabs\n- Commented out unused variables and imports\n- Added eslint-disable comments for unavoidable warnings\n- Created FIXES_APPLIED.md documenting all changes and remaining issues\n\nRemaining issues to investigate:\n- Email service requires Gmail credentials configuration\n- Manual invoice integration with financial tab\n- Dashboard counting logic\n- Accounting tab functionality\n\n🤖 Generated with Claude Code\nhttps://claude.com/claude-code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": [],
     "ask": []
