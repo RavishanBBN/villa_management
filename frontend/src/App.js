@@ -13,7 +13,7 @@ import GuestManagement from './components/tabs/GuestManagement';
 import AnalyticsReports from './components/tabs/AnalyticsReports';
 import NotificationsEmail from './components/tabs/NotificationsEmail';
 import UploadManagement from './components/tabs/UploadManagement';
-import { useToast } from './components/common/Toast';
+// import { useToast } from './components/common/Toast'; // Unused
 // Complete Chart.js imports - register ALL required components
 import {
   Chart as ChartJS,
@@ -64,7 +64,7 @@ function App() {
   // User Management States
   const [users, setUsers] = useState([]);
   const [showUserModal, setShowUserModal] = useState(false);
-  const [showUserListModal, setShowUserListModal] = useState(false);
+  // const [showUserListModal, setShowUserListModal] = useState(false); // Unused
   const [userForm, setUserForm] = useState({
     username: '',
     email: '',
@@ -118,19 +118,19 @@ function App() {
   const [showRevenueModal, setShowRevenueModal] = useState(false); // ✅ This is correct
   const [expenses, setExpenses] = useState([]);
   const [revenue, setRevenue] = useState([]); // ✅ This is correct
-  const [financialReports, setFinancialReports] = useState(null);
-  const [pendingExpenses, setPendingExpenses] = useState([]);
+  // const [financialReports, setFinancialReports] = useState(null); // Unused
+  // const [pendingExpenses, setPendingExpenses] = useState([]); // Unused
   const [hoveredCard, setHoveredCard] = useState(null);
   const [animationTriggers, setAnimationTriggers] = useState({
     statsUpdated: false,
     newReservation: false
   });
   // Add these state declarations with your other useState declarations
-  const [financialChartData, setFinancialChartData] = useState(null);
-  const [detailedProfitLoss, setDetailedProfitLoss] = useState(null);
-  const [cashFlowData, setCashFlowData] = useState(null);
+  // const [financialChartData, setFinancialChartData] = useState(null); // Unused
+  // const [detailedProfitLoss, setDetailedProfitLoss] = useState(null); // Unused
+  // const [cashFlowData, setCashFlowData] = useState(null); // Unused
   const [showExpenseListModal, setShowExpenseListModal] = useState(false);
-  const [expenseFilter, setExpenseFilter] = useState('all');
+  // const [expenseFilter, setExpenseFilter] = useState('all'); // Unused
   const [selectedExpense, setSelectedExpense] = useState(null);
   const [showExpenseDetailModal, setShowExpenseDetailModal] = useState(false);
   const [lastDataUpdate, setLastDataUpdate] = useState(Date.now());
@@ -141,8 +141,8 @@ function App() {
   // Inventory Management States
   const [inventoryItems, setInventoryItems] = useState([]);
   const [inventoryDashboard, setInventoryDashboard] = useState(null);
-  const [stockTransactions, setStockTransactions] = useState([]);
-  const [lowStockAlerts, setLowStockAlerts] = useState([]);
+  // const [stockTransactions, setStockTransactions] = useState([]); // Unused
+  // const [lowStockAlerts, setLowStockAlerts] = useState([]); // Unused
   const [showInventoryModal, setShowInventoryModal] = useState(false);
   const [showStockInModal, setShowStockInModal] = useState(false);
   const [showStockOutModal, setShowStockOutModal] = useState(false);
@@ -265,7 +265,7 @@ function App() {
   const [interactiveProfitLoss, setInteractiveProfitLoss] = useState(null);
   const [advancedAnalytics, setAdvancedAnalytics] = useState(null);
   const [realtimeMetrics, setRealtimeMetrics] = useState(null);
-  const [financialGoals, setFinancialGoals] = useState(null);
+  // const [financialGoals, setFinancialGoals] = useState(null); // Unused
   const [selectedReportPeriod, setSelectedReportPeriod] = useState('6months');
   const [customDateRange, setCustomDateRange] = useState({
     startDate: '',
@@ -297,16 +297,16 @@ function App() {
     startDate: '',
     endDate: ''
   });
-  const [visibleCharts, setVisibleCharts] = useState({
-    revenue: true,
-    expenses: true,
-    profit: true,
-    cashFlow: true,
-    revenueBreakdown: true,
-    expenseCategories: true,
-    paymentMethods: true,
-    trends: true
-  });
+  // const [visibleCharts, setVisibleCharts] = useState({ // Unused
+  //   revenue: true,
+  //   expenses: true,
+  //   profit: true,
+  //   cashFlow: true,
+  //   revenueBreakdown: true,
+  //   expenseCategories: true,
+  //   paymentMethods: true,
+  //   trends: true
+  // });
 
   // Handle custom date range function
   const handleCustomDateRange = async (startDate, endDate) => {
@@ -315,7 +315,7 @@ function App() {
 };
   // Enhanced expense form with validation
   const [expenseFormErrors, setExpenseFormErrors] = useState({});
-  const [expenseFilePreview, setExpenseFilePreview] = useState(null);
+  // const [expenseFilePreview, setExpenseFilePreview] = useState(null); // Unused
   
   const [expenseFilters, setExpenseFilters] = useState({
     status: 'all',
@@ -509,12 +509,13 @@ function App() {
   const [calendarData, setCalendarData] = useState(null);
   const [pricingData, setPricingData] = useState(null);
   const [externalCalendars, setExternalCalendars] = useState([]);
-  const [calendarOverrides, setCalendarOverrides] = useState([]);
-  const [seasonalRates, setSeasonalRates] = useState([]);
-  // Initialize and fix existing data on server start
+  // const [calendarOverrides, setCalendarOverrides] = useState([]); // Unused
+  // const [seasonalRates, setSeasonalRates] = useState([]); // Unused
+  // Initialize and fix existing data on server start - Unused function commented out
+  /*
   const initializeFinancialData = () => {
   console.log('🔧 Initializing financial data...');
-  
+
   // Fix existing revenue entries
   if (revenue && Array.isArray(revenue)) {
     revenue.forEach((entry, index) => {
@@ -522,7 +523,7 @@ function App() {
       entry.amount = parseFloat(entry.amount) || 0;
       entry.amountUSD = parseFloat(entry.amountUSD) || entry.amount / currencyRate;
       entry.exchangeRate = parseFloat(entry.exchangeRate) || currencyRate;
-      
+
       // Ensure required fields
       if (!entry.id) entry.id = 'rev_fix_' + Date.now() + '_' + index;
       if (!entry.date) entry.date = new Date().toISOString().split('T')[0];
@@ -530,23 +531,24 @@ function App() {
       if (!entry.currency) entry.currency = 'LKR';
     });
   }
-  
+
   // Fix existing expense entries
   if (expenses && Array.isArray(expenses)) {
     expenses.forEach((entry, index) => {
       // Ensure numeric values
       entry.amount = parseFloat(entry.amount) || 0;
       entry.amountUSD = parseFloat(entry.amountUSD) || entry.amount / currencyRate;
-      
+
       // Ensure required fields
       if (!entry.id) entry.id = 'exp_fix_' + Date.now() + '_' + index;
       if (!entry.expenseDate) entry.expenseDate = new Date().toISOString().split('T')[0];
       if (!entry.status) entry.status = 'pending';
     });
   }
-  
+
   console.log(`✅ Fixed ${revenue?.length || 0} revenue entries and ${expenses?.length || 0} expense entries`);
 };
+*/
 
   // Calendar view controls
   const [calendarView, setCalendarView] = useState({
@@ -594,14 +596,14 @@ function App() {
     syncStrategy: 'import_only'
   });
 
-  const [seasonalRateForm, setSeasonalRateForm] = useState({
-    unitId: '',
-    name: '',
-    startDate: '',
-    endDate: '',
-    multiplier: 1.1,
-    description: ''
-  });
+  // const [seasonalRateForm, setSeasonalRateForm] = useState({ // Unused
+  //   unitId: '',
+  //   name: '',
+  //   startDate: '',
+  //   endDate: '',
+  //   multiplier: 1.1,
+  //   description: ''
+  // });
 
   // Current user (for messaging)
   const [currentUser] = useState({

@@ -24,8 +24,8 @@ const Accounting = () => {
     transactionsLoading,
     transactionsError,
     loadTransactions,
-    getTransactionDetails,
-    reverseTransaction,
+    // getTransactionDetails, // Unused
+    // reverseTransaction, // Unused
 
     // Financial Reports
     profitLossStatement,
@@ -48,7 +48,7 @@ const Accounting = () => {
 
   // UI State
   const [activeSection, setActiveSection] = useState('dashboard');
-  const [selectedTransaction, setSelectedTransaction] = useState(null);
+  // const [selectedTransaction, setSelectedTransaction] = useState(null); // Unused
   const [accountFilter, setAccountFilter] = useState('all');
   const [transactionFilter, setTransactionFilter] = useState({
     startDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -65,6 +65,7 @@ const Accounting = () => {
     if (activeSection === 'dashboard') {
       loadDashboard(reportDates.startDate, reportDates.endDate);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Format currency
@@ -114,13 +115,13 @@ const Accounting = () => {
     accountFilter === 'all' || acc.accountType === accountFilter
   );
 
-  // Group accounts by type
-  const accountsByType = accounts.reduce((groups, account) => {
-    const type = account.accountType;
-    if (!groups[type]) groups[type] = [];
-    groups[type].push(account);
-    return groups;
-  }, {});
+  // Group accounts by type - Unused but keeping for future use
+  // const accountsByType = accounts.reduce((groups, account) => {
+  //   const type = account.accountType;
+  //   if (!groups[type]) groups[type] = [];
+  //   groups[type].push(account);
+  //   return groups;
+  // }, {});
 
   // Render initialization screen if not initialized
   if (!isInitialized && activeSection !== 'dashboard') {

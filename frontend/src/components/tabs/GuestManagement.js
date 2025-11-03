@@ -18,7 +18,7 @@ const GuestManagement = () => {
     createGuest,
     updateGuest,
     deleteGuest,
-    searchGuests,
+    // searchGuests, // Unused - kept for future use
     updateFilters,
     clearFilters,
     setSelectedGuest,
@@ -196,6 +196,7 @@ const GuestManagement = () => {
   // Apply filters when they change
   useEffect(() => {
     loadGuests(filters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.search, filters.email, filters.country, filters.sortBy, filters.order]);
 
   return (

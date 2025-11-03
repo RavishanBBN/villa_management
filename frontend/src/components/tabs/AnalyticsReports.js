@@ -61,6 +61,7 @@ const AnalyticsReports = () => {
       analytics.loadRevenue(dateRange.startDate, dateRange.endDate);
       analytics.loadGuestAnalytics();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSection]);
 
   // Load audit logs on mount
@@ -69,6 +70,7 @@ const AnalyticsReports = () => {
       auditLogs.loadLogs();
       auditLogs.loadSummary();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSection]);
 
   // Handle generate report

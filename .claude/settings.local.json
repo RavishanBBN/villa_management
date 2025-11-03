@@ -38,7 +38,10 @@
       "Bash(python3:*)",
       "Bash(xargs kill:*)",
       "Bash(cd:*)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(test:*)",
+      "Bash(npm --version)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
